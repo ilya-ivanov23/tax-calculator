@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tax-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tax-calculator
+  template:
+    metadata:
+      labels:
+        app: tax-calculator
+    spec:
+      containers:
+        - name: tax-calculator
+          image: tax-calculator:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "250m"
